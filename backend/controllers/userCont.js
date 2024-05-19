@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const nodemailer = require('nodemailer');
-const fs =requier('fs');
+const fs =require('fs');
 const csv = require('csv-parser');
 const List= require('../models/list');
 exports.addUsers= async(req, res)=>{
