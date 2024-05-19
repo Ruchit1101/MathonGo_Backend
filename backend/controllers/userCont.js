@@ -9,12 +9,12 @@ exports.addUsers= async(req, res)=>{
        if(!file){
               return res.status(400).json({error:'No file uploaded...'})
        }
-       const list= await List.findById(id);
+       const list= await List.findById(Id);
        if(!list){
               return res.status(404).json({error:'List Not Found...'}) 
        }
-       const res =[];
-       const error=[];
+       const results =[];
+       const errors=[];
        const customProp=list.customProp;
        fs.createReadStream(file.path).pipe(csv()).on('data', (data)=>{
               const user={
@@ -25,7 +25,7 @@ exports.addUsers= async(req, res)=>{
               for(const key in customProp){
                      user.properties[key]=data[key]||customProp.get(key);
               }
-              res.push(user);
+              results.push(user);
        })
        .on('end', async()=>{
               fs.unlinkSync(file.path);
@@ -50,10 +50,10 @@ exports.addUsers= async(req, res)=>{
 };
 
 exports.sendEmail = async (req, res) => {
-       const { listId } = req.params;
+       const { Id } = req.params;
        const { subject, body } = req.body;
      
-       const list = await List.findById(listId).populate('users');
+       const list = await List.findById(Id).populate('users');
        if (!list) {
          return res.status(404).json({ error: 'List not found' });
        }
