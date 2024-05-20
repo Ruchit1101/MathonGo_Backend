@@ -2,9 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "MathonGo Backend",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
