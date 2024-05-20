@@ -17,7 +17,7 @@ app.use('/api/users', userRoute);
 // CONNECTIN THE SERVER...
 const port = process.env.MY_PORT || 4001;
 const server = app.listen(port, ()=>{
-       // console.log(`Server is running on port: ${port}`);
+       console.log(`Server is running on port: ${port}`);
 })
 server.on('error', (error)=>{
        console.error(`Error in starting server ${error}`);
